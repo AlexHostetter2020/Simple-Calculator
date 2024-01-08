@@ -42,9 +42,24 @@ int main()
 	std::cout << "****** Hello! This is a simple calculator app. ******" << '\n';
 	std::cout << "\n";
 	std::cout << "Supported operations include: {ADD, SUBTRACT, DIVIDE, MULTIPLY";
-	std::cout << ", FACTORIAL, MODULUS}\n";
+	std::cout << ", FACTORIAL, MODULUS}\n\n" << "Type 'q' to quit.\n\n";
 
-	
+	while (std::cin)
+	{
+		// Terminal Prompt.
+		std::cout << "--> ";
+
+		// Store the user's input in memory.
+		double first_Input;
+		char operation;
+		double second_Input;
+
+		std::cin >> first_Input >> operation >> second_Input;
+
+		// Exit command.
+		if (operation == 'q') { break; }
+	}
+
 	// DONE.
 	return 0;
 }
