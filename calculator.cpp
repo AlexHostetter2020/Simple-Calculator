@@ -3,7 +3,6 @@
 // Include Statements.
 #include <iostream>		// Input and output
 #include <cmath>		// Unary math operations (!, Sin, etc.)
-#include <string>		// Output to the terminal.
 
 /********************************************************************************/
 
