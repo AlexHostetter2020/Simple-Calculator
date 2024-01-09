@@ -1,20 +1,12 @@
 /********************************************************************************/
 
 // Include Statements.
-#include <iostream>
+#include <iostream>		// Input and output
+#include <cmath>		// Unary math operations (!, Sin, etc.)
 
 /********************************************************************************/
 
 // Functions to decrease redundancy/perform more complex computations.
-
-double getValueFromUser()
-{
-	std::cout << "Please enter a number: ";
-	double input{};
-	std::cin >> input;
-
-	return input;
-}
 
 // Factorial function using recursion. Example: 3! = 3 * 2 * 1 = 6
 long long int factorial(long long int n)
@@ -42,7 +34,10 @@ int main()
 	std::cout << "****** Hello! This is a simple calculator app. ******" << '\n';
 	std::cout << "\n";
 	std::cout << "Supported operations include: {ADD, SUBTRACT, DIVIDE, MULTIPLY";
-	std::cout << ", FACTORIAL, MODULUS}\n\n" << "Type 'q' to quit.\n\n";
+	std::cout << ", MODULUS}\n\n" << "Type 'q' to quit.\n\n";
+
+
+	// ADD IF STATEMENT FOR UNIARY AND BINARY OPERATIONS FOR USER TO SELECT.
 
 	while (std::cin)
 	{
@@ -58,10 +53,24 @@ int main()
 
 		// Exit command.
 		if (operation == 'q') { break; }
+
+		// Operations
+		if (operation == '+') { std::cout << first_Input + second_Input << '\n'; }
+
+		if (operation == '-') { std::cout << first_Input - second_Input << '\n'; }
+
+		if (operation == '*') { std::cout << first_Input * second_Input << '\n'; }
+
+		if (operation == '/') { std::cout << first_Input / second_Input << '\n'; }
+		
+		if (operation == '%')
+		{
+			std::cout << int(first_Input) % int(second_Input) << '\n';
+		}
 	}
 
 	// DONE.
-	return 0;
+	return EXIT_SUCCESS;
 }
 
 /********************************************************************************/
