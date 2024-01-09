@@ -3,6 +3,7 @@
 // Include Statements.
 #include <iostream>		// Input and output
 #include <cmath>		// Unary math operations (!, Sin, etc.)
+#include <string>		// Output to the terminal.
 
 /********************************************************************************/
 
@@ -18,6 +19,27 @@ long long int factorial(long long int n)
 	else { return n * factorial(n - 1); }
 }
 
+// Outputs the operation the user wants.
+void userInput(double first_Input, char operation, double second_Input)
+{
+	// Exit command.
+	if (operation == 'q') { break; }
+
+	// Operations
+	if (operation == '+') { std::cout << first_Input + second_Input << '\n'; }
+
+	if (operation == '-') { std::cout << first_Input - second_Input << '\n'; }
+
+	if (operation == '*') { std::cout << first_Input * second_Input << '\n'; }
+
+	if (operation == '/') { std::cout << first_Input / second_Input << '\n'; }
+
+	if (operation == '%')
+	{
+		std::cout << int(first_Input) % int(second_Input) << '\n';
+	}
+}
+
 /********************************************************************************/
 
 /*	Calculator App
@@ -27,9 +49,6 @@ long long int factorial(long long int n)
 */
 int main()
 {
-	// Stores the user's running total for the computation.
-	double userNumber = 0;
-
 	// Simple prompt explaining the valid operations to the user.
 	std::cout << "****** Hello! This is a simple calculator app. ******" << '\n';
 	std::cout << "\n";
@@ -51,22 +70,7 @@ int main()
 
 		std::cin >> first_Input >> operation >> second_Input;
 
-		// Exit command.
-		if (operation == 'q') { break; }
-
-		// Operations
-		if (operation == '+') { std::cout << first_Input + second_Input << '\n'; }
-
-		if (operation == '-') { std::cout << first_Input - second_Input << '\n'; }
-
-		if (operation == '*') { std::cout << first_Input * second_Input << '\n'; }
-
-		if (operation == '/') { std::cout << first_Input / second_Input << '\n'; }
-		
-		if (operation == '%')
-		{
-			std::cout << int(first_Input) % int(second_Input) << '\n';
-		}
+		userInput(first_Input, operation, second_Input);
 	}
 
 	// DONE.
