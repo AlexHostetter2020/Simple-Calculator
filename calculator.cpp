@@ -1,7 +1,7 @@
 #include <iostream>
 
 // Function definitions
-int getUserInput()
+static int getUserInput()
 {
 	std::cout << "Enter an integer   --> ";
 	int input{};
@@ -10,7 +10,7 @@ int getUserInput()
 	return input;
 }
 
-char getMathOperation()
+static char getMathOperation()
 {
 	std::cout << "Enter an operation --> ";
 	char operation{};
@@ -19,16 +19,16 @@ char getMathOperation()
 	return operation;
 }
 
-double calculateResult(int value_1, char operation, int value_2)
+static double calculateResult(int value_1, char operation, int value_2)
 {
 	if (operation == '+') { return value_1 + value_2; }
 	if (operation == '-') { return value_1 - value_2; }
 	if (operation == '*') { return value_1 * value_2; }
-	if (operation == '/') { return value_1 / value_2; }
+	if (operation == '/') { return double(value_1) / value_2; }
 	if (operation == '%') { return value_1 % value_2; }
 }
 
-void printResult(double result)
+static void printResult(double result)
 {
 	std::cout << "Output: " << result;
 }
