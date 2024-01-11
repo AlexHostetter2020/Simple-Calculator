@@ -1,79 +1,68 @@
-/********************************************************************************/
+#include <iostream>
 
-// Include Statements.
-#include <iostream>		// Input and output
-#include <cmath>		// Unary math operations (!, Sin, etc.)
-
-/********************************************************************************/
-
-// Functions to decrease redundancy/perform more complex computations.
-
-// Factorial function using recursion. Example: 3! = 3 * 2 * 1 = 6
-long long int factorial(long long int n)
+// Function definitions
+int getUserInput()
 {
-	// Base case.
-	if (n == 0) { return 1; }
+	std::cout << "Enter an integer   --> ";
+	int input{};
+	std::cin >> input;
 
-	// Recursion.
-	else { return n * factorial(n - 1); }
+	return input;
 }
 
-// Outputs the operation the user wants.
-void userInput(double first_Input, char operation, double second_Input)
+char getMathOperation()
 {
-	// Exit command.
-	if (operation == 'q') { break; }
+	std::cout << "Enter an operation --> ";
+	char operation{};
+	std::cin >> operation;
 
-	// Operations
-	if (operation == '+') { std::cout << first_Input + second_Input << '\n'; }
-
-	if (operation == '-') { std::cout << first_Input - second_Input << '\n'; }
-
-	if (operation == '*') { std::cout << first_Input * second_Input << '\n'; }
-
-	if (operation == '/') { std::cout << first_Input / second_Input << '\n'; }
-
-	if (operation == '%')
-	{
-		std::cout << int(first_Input) % int(second_Input) << '\n';
-	}
+	return operation;
 }
 
-/********************************************************************************/
+double calculateResult(int value_1, char operation, int value_2)
+{
+	if (operation == '+') { return value_1 + value_2; }
+	if (operation == '-') { return value_1 - value_2; }
+	if (operation == '*') { return value_1 * value_2; }
+	if (operation == '/') { return value_1 / value_2; }
+	if (operation == '%') { return value_1 % value_2; }
+}
 
-/*	Calculator App
-*	Defined Operations:
-*	
-*	Add, Subtract, Divide, Multiply, Factorial, Modulus.
-*/
+void printResult(double result)
+{
+	std::cout << "Output: " << result;
+}
+
 int main()
 {
-	// Simple prompt explaining the valid operations to the user.
-	std::cout << "****** Hello! This is a simple calculator app. ******" << '\n';
-	std::cout << "\n";
-	std::cout << "Supported operations include: {ADD, SUBTRACT, DIVIDE, MULTIPLY";
-	std::cout << ", MODULUS}\n\n" << "Type 'q' to quit.\n\n";
-
-
-	// ADD IF STATEMENT FOR UNIARY AND BINARY OPERATIONS FOR USER TO SELECT.
-
+	// Prompt header
+	std::cout << "******** SIMPLE CALCULATOR ********\n\n";
+	std::cout << "TYPE 'q' TO QUIT.\n\n";
 	while (std::cin)
 	{
-		// Terminal Prompt.
-		std::cout << "--> ";
+		// Get first number from user.
+		int value_1{ getUserInput() };
+		std::cout << '\n';
 
-		// Store the user's input in memory.
-		double first_Input;
-		char operation;
-		double second_Input;
+		// Get math operation from user.
+		char operation{ getMathOperation() };
 
-		std::cin >> first_Input >> operation >> second_Input;
+		// Break out the loop if user types 'q'.
+		if (operation == 'q') { break; }
+		std::cout << '\n';
 
-		userInput(first_Input, operation, second_Input);
+		// Get second number from user.
+		int value_2{ getUserInput() };
+		std::cout << '\n';
+
+		// Calculate result.
+		double result{ calculateResult(value_1, operation, value_2) };
+
+		// Print result.
+		printResult(result);
+		std::cout << '\n';
+		std::cout << "-----------------------------------\n\n";
 	}
 
-	// DONE.
-	return EXIT_SUCCESS;
+	return 0;
 }
-
-/********************************************************************************/
